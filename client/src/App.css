@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fdfbf7;
+  --color-foreground: #1a1a1a;
+  --color-surface: #ffffff;
+  --color-primary: #f97316;
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: Inter, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #fdfbf7;
+    color: #1a1a1a;
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Instrument Serif", serif;
+  }
+}
+
+@layer components {
+  .navbar {
+    @apply fixed top-0 w-full z-50 bg-background/90 backdrop-blur-sm border-b border-black/5;
+  }
+  .navbar .inner {
+    @apply max-w-7xl mx-auto px-6 h-16 flex items-center justify-between;
+  }
+  .navbar .left {
+    @apply flex items-center space-x-8;
+  }
+  .navbar .brand {
+    @apply flex items-center space-x-2 cursor-pointer text-black no-underline;
+  }
+  .navbar .brand .logo {
+    @apply w-6 h-6;
+  }
+  .navbar .brand .name {
+    @apply text-xl font-serif font-bold tracking-tight;
+  }
+  .navbar .links {
+    @apply flex items-center space-x-6;
+  }
+  .navbar .links a {
+    @apply text-sm font-medium text-zinc-600 hover:text-black transition-colors no-underline;
+  }
+}
+
+.home {
+  @apply min-h-screen bg-background relative overflow-x-hidden text-foreground;
+}
+.home .hero {
+  @apply pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center;
+}
+.home .announce {
+  @apply mb-8 inline-flex items-center px-3 py-1 rounded-md bg-white border border-zinc-200 shadow-sm;
+}
+.home .announce .dot {
+  @apply w-4 h-4 rounded bg-blue-100 flex items-center justify-center mr-2;
+}
+.home .announce .pulse {
+  @apply w-2 h-2 rounded-full bg-blue-500 animate-pulse;
+}
+.home .announce p {
+  @apply text-[10px] font-bold uppercase tracking-widest text-zinc-600;
+}
+.home h1 {
+  @apply text-6xl md:text-8xl font-serif leading-[0.95] text-black mb-8 max-w-5xl mx-auto;
+}
+.home .subtitle {
+  @apply max-w-2xl mx-auto text-xs md:text-sm font-mono uppercase tracking-widest text-zinc-500 mb-10 leading-relaxed;
+}
+.home .actions .cta {
+  @apply inline-flex items-center justify-center rounded-md px-8 py-3 text-sm uppercase tracking-wide font-bold bg-primary text-white hover:bg-[#ea580c] shadow-md no-underline;
+}
+.home .projects {
+  @apply py-24 bg-white relative border-b border-zinc-100;
+}
+.home .section-inner {
+  @apply max-w-7xl mx-auto px-6;
+}
+.home .section-head .copy h2 {
+  @apply text-4xl font-serif text-black mb-4;
+}
+.home .section-head .copy p {
+  @apply text-zinc-500 text-lg;
+}
+.home .projects-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+.home .project-card {
+  @apply relative bg-white rounded-xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full no-underline text-inherit;
+}
+.home .project-card .preview {
+  @apply aspect-[4/3] overflow-hidden bg-zinc-100 relative;
+}
+.home .project-card .preview img {
+  @apply w-full h-full object-cover group-hover:scale-105 transition-transform duration-700;
+}
+.home .project-card .badge {
+  @apply absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md border border-zinc-200 shadow-sm;
+}
+.home .project-card .badge span {
+  @apply text-[10px] font-bold uppercase tracking-wider text-zinc-800;
+}
+.home .project-card .card-body {
+  @apply p-5 flex justify-between items-center bg-white border-t border-zinc-100 grow;
+}
+.home .project-card .card-body h3 {
+  @apply text-lg font-serif font-bold text-zinc-900 group-hover:text-primary transition-colors;
+}
+.home .project-card .card-body .meta {
+  @apply flex items-center text-zinc-400 text-xs mt-1 space-x-2;
+}
+.home .project-card .card-body .arrow {
+  @apply w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300;
+}
+.home .upload-shell {
+  @apply w-full max-w-5xl mx-auto relative rounded-3xl overflow-hidden border border-blue-100 p-6 md:p-12 shadow-sm min-h-[200px] flex items-center justify-center;
+  background: linear-gradient(to bottom, rgba(191, 219, 254, 0.5), rgba(255,255,255,0.5));
+}
+.home .upload-shell .grid-overlay {
+  @apply absolute inset-0 opacity-40 pointer-events-none;
+  background-image: linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.home .upload-card {
+  @apply relative w-full max-w-xl bg-white rounded-2xl shadow-xl overflow-hidden border border-zinc-100 p-8 z-10;
+}
+.home .upload-head {
+  @apply text-center mb-6;
+}
+.home .upload-head .upload-icon {
+  @apply w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3;
+}
+.home .upload-head .upload-icon .icon {
+  @apply text-orange-500 w-6 h-6;
+}
+.home .upload-head h3 {
+  @apply text-xl font-serif font-bold text-black;
+}
+.home .upload-head p {
+  @apply text-zinc-500 text-sm mt-1;
+}
+.home .dropzone {
+  @apply relative h-48 rounded-xl border-2 border-dashed border-zinc-200 transition-all flex flex-col items-center justify-center cursor-pointer bg-zinc-50 hover:border-zinc-300 hover:bg-zinc-100;
+}
+.home .dropzone.is-dragging {
+  @apply border-primary bg-orange-50;
+}
+.home .drop-input {
+  @apply absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10;
+}
+.home .drop-content {
+  @apply flex flex-col items-center pointer-events-none;
+}
+.home .drop-content .drop-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-zinc-200 text-zinc-500;
+}
+.home .drop-content p {
+  @apply text-zinc-900 font-bold text-sm mb-1;
+}
+.home .upload-status {
+  @apply h-48 rounded-xl border border-zinc-200 bg-white p-6 flex flex-col justify-center relative;
+}
+.home .upload-status .status-content {
+  @apply flex flex-col items-center justify-center text-center;
+}
+.home .upload-status .status-content .status-icon {
+  @apply w-12 h-12 rounded-lg bg-zinc-100 flex items-center justify-center text-black mb-3 border border-zinc-200;
+}
+.home .upload-status .status-content .status-icon .check {
+  @apply text-green-500;
+}
+.home .progress {
+  @apply w-full max-w-[200px] h-1.5 bg-zinc-100 rounded-full mt-3 overflow-hidden;
+}
+.home .progress .bar {
+  @apply h-full bg-primary transition-all duration-300;
+}
+.home .status-text {
+  @apply text-zinc-500 text-xs font-mono uppercase mt-2;
+}
+
+.visualizer {
+  @apply min-h-screen bg-background pt-6 pb-10 px-4 md:px-6 flex flex-col items-center font-sans relative;
+}
+.visualizer .topbar {
+  @apply w-full max-w-6xl flex items-center justify-between mb-6 px-2;
+}
+.visualizer .topbar .brand {
+  @apply flex items-center space-x-2 cursor-pointer;
+}
+.visualizer .topbar .brand .logo {
+  @apply w-6 h-6 text-black;
+}
+.visualizer .topbar .name {
+  @apply text-xl font-serif font-bold text-black tracking-tight;
+}
+.visualizer .content {
+  @apply w-full max-w-6xl grid grid-cols-1 gap-6;
+}
+.visualizer .panel {
+  @apply bg-white rounded-xl border border-zinc-200 shadow-2xl overflow-hidden;
+}
+.visualizer .panel-header {
+  @apply flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-5 border-b border-zinc-100;
+}
+.visualizer .panel-meta p {
+  @apply text-xs font-mono uppercase tracking-widest text-zinc-400;
+}
+.visualizer .panel-meta h2 {
+  @apply text-2xl font-serif font-bold text-black;
+}
+.visualizer .panel-meta h3 {
+  @apply text-lg font-serif font-bold text-black;
+}
+.visualizer .panel-meta .note {
+  @apply text-xs text-zinc-500 mt-1;
+}
+.visualizer .render-area {
+  @apply relative bg-zinc-100 min-h-[280px];
+}
+.visualizer .render-area.is-processing .render-img {
+  @apply opacity-50 blur-sm;
+}
+.visualizer .render-overlay {
+  @apply absolute inset-0 flex flex-col items-center justify-center z-30 bg-white/60 backdrop-blur-sm;
+}
+.visualizer .rendering-card {
+  @apply bg-white px-6 py-4 rounded-xl border border-zinc-200 flex flex-col items-center shadow-2xl;
+}
+.visualizer .spinner {
+  @apply w-8 h-8 mb-3 animate-spin text-primary;
+}
+.visualizer .compare .hint {
+  @apply text-xs text-zinc-400;
+}
+.visualizer .compare-img {
+  @apply w-full h-auto object-contain;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg font-medium transition-all focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.btn--primary {
+  @apply bg-primary text-white hover:bg-[#EA580C] shadow-sm;
+}
+.btn--sm {
+  @apply px-3 py-1.5 text-xs uppercase tracking-wide;
+}
+.btn--lg {
+  @apply px-8 py-3 text-sm uppercase tracking-wide font-bold;
+}
+.loading {
+  @apply flex items-center justify-center text-sm text-zinc-500 py-8;
+}
+.empty {
+  @apply col-span-full rounded-xl border border-dashed border-zinc-200 bg-zinc-50 p-10 text-center text-sm text-zinc-500 no-underline;
+}
